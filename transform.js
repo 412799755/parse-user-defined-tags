@@ -1,7 +1,7 @@
-function transform(htmlStr){
+function transform(htmlStr,tagStart,tagEnd){
     let reg = /(<red>|<\/red>)/g
     let testStack = new Stack
-    let tmp
+    let tmp = {}
     let arr = new BulidArray(htmlStr)
     let result = {}
     while(tmp){
@@ -15,7 +15,7 @@ function transform(htmlStr){
             arr.build(tmp.index,tmp[0] =='<red>',tmp[0])
        }
     }
-    result.value = arr.result
+    result.value = arr.result.length?arr.result:[{value:htmlStr}]
     result.iscorrect = !testStack.stack.length
     return result
 }
@@ -49,4 +49,4 @@ function BulidArray(str){
 
     }
 }
-transform('<red></red>')
+transform('<red>大家啊if年假倒是</red>dhauhfduaasduisadvdeadafdac')
